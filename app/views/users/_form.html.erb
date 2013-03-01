@@ -1,0 +1,40 @@
+<%= form_for(@user) do |f| %>
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <%= f.hidden_field :photo_file %>
+
+    <div class="field">
+      <%= f.label :name %>
+      <br/>
+      <%= f.text_field :name %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
+<form class="direct-upload" method="post" enctype="multipart/form-data" action="https://<%= AMAZON_S3_CREDENTIALS['bucket']%>.s3.amazonaws.com" accept-charset="UTF-8">
+  <%= hidden_field_tag :key %>
+  <%= hidden_field_tag :AWSAccessKeyId, AMAZON_S3_CREDENTIALS['access_key_id'] %>
+  <%= hidden_field_tag :acl, 'private' %>
+  <%= hidden_field_tag :policy %>
+  <%= hidden_field_tag :signature %>
+  <%= hidden_field_tag :success_action_status, '201' %>
+  <%= file_field_tag :file %>
+  <span id="upload_video_succesful" style="display: none;color: green;">
+      Video uploaded succesfully!!
+    </span>
+</form>
+<div id="upload_video_error" style="color: red"/>
+<div class="progress progress-striped active">
+  <div class="bar"></div>
+</div>

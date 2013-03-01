@@ -1,0 +1,16 @@
+development:
+  bucket: funinbairesdevelopment
+  access_key_id: AKIAJAGSO3IDCDEJROAA
+  secret_access_key: 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
+test:
+  bucket: funinbairesdevelopment
+  access_key_id: AKIAJAGSO3IDCDEJROAA
+  secret_access_key: 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
+staging:
+  bucket: funinbairesdevelopment
+  access_key_id: AKIAJAGSO3IDCDEJROAA
+  secret_access_key: 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
+qa:
+  bucket: funinbairesdevelopment
+  access_key_id: AKIAJAGSO3IDCDEJROAA
+  secret_access_key: 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
